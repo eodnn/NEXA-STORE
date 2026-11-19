@@ -1,0 +1,33 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const path = require('path');
+const pool = require('./src/config/db');
+const {auth} = require('./src/middleware/auth');
+const app=express();
+app.disable('x-powered-by');
+app.use(helmet({contentSecurityPolicy:false}));
+app.use(cors({origin:(process.env.CORS_ORIGIN||'http://localhost:5173').split(',').map(s=>s.trim())}));
+app.use(express.json({limit:'128kb'}));
+app.use('/api/auth/login',rateLimit({windowMs:15*60*1000,limit:30,standardHeaders:'draft-7',legacyHeaders:false,message:{erro:'Muitas tentativas. Aguarde 15 minutos.'}}));
+app.get('/api/health',async(req,res)=>{try{await pool.query('SELECT 1');res.json({status:'ok',database:'online'});}catch{res.status(503).json({status:'erro',database:'offline'});}});
+app.use('/api/auth', require('./src/routes/auth'));
+app.use('/api/vendas',auth,require('./src/routes/sales'));
+app.use('/api/estoque',auth,require('./src/routes/stock'));
+app.use('/api',auth,require('./src/routes/reports'));
+app.use('/api',auth,require('./src/routes/crud'));
+app.use('/api', (req,res)=>res.status(404).json({erro:'Rota não encontrada.'}));
+const staticDir=path.join(__dirname,'frontend','dist');
+app.use(express.static(staticDir));
+app.get('*',(req,res)=>{if(require('fs').existsSync(path.join(staticDir,'index.html')))res.sendFile(path.join(staticDir,'index.html'));else res.status(404).send('Frontend não compilado. Execute npm run build ou npm --prefix frontend run dev.');});
+app.use((err,req,res,next)=>{
+ if(err.code==='ER_DUP_ENTRY') return res.status(409).json({erro:'Já existe um registro com este valor único.'});
+ if(err.code==='ER_ROW_IS_REFERENCED_2') return res.status(409).json({erro:'Registro possui vínculos e não pode ser excluído. Desative-o.'});
+ if(err.code==='ER_NO_REFERENCED_ROW_2') return res.status(400).json({erro:'Categoria, fornecedor ou outra referência não encontrada.'});
+ console.error(`[${new Date().toISOString()}]`,err);
+ return res.status(err.status||500).json({erro:err.status?err.message:'Falha no servidor. Verifique o terminal.'});
+});
+if(require.main===module){const port=Number(process.env.PORT||3000);app.listen(port,()=>console.log(`NEXA STORE: http://localhost:${port}`));}
+module.exports=app;

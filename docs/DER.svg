@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 950" width="1240" height="950">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10" fill="none" stroke="#818cf8" stroke-width="1.6"/></marker></defs>
+<rect width="1240" height="950" fill="#0b1220"/><text x="70" y="51" fill="#fff" font-family="Arial" font-size="27" font-weight="bold">NEXA STORE</text><text x="315" y="50" fill="#94a3b8" font-family="Arial" font-size="19">Diagrama entidade-relacionamento · MySQL 8</text>
+<text x="70" y="924" fill="#64748b" font-family="Arial" font-size="14">PK = chave primária   ·   FK = chave estrangeira   ·   UQ = valor único   ·   Linha indica relacionamento por FK</text>
+<line x1="340" y1="155" x2="490" y2="253" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="340" y1="385" x2="490" y2="295" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="340" y1="615" x2="850" y2="615" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="595.0" y="606.0" fill="#a5b4fc" font-size="13" font-family="Arial">1:N</text>
+<line x1="340" y1="805" x2="850" y2="680" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="595.0" y="733.5" fill="#a5b4fc" font-size="13" font-family="Arial">1:N</text>
+<line x1="730" y1="290" x2="850" y2="290" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="990" y1="361" x2="990" y2="560" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="990.0" y="451.5" fill="#a5b4fc" font-size="13" font-family="Arial">N:1</text>
+<line x1="610" y1="361" x2="610" y2="445" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="850" y1="715" x2="770" y2="770" stroke="#57668e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="100" y="100" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M113 100H327Q340 100 340 113V142H100V113Q100 100 113 100" fill="#373d87"/>
+<text x="115" y="128" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">usuarios</text>
+<text x="115" y="167" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="115" y="192" fill="#7dd3fc" font-family="Arial" font-size="14">UQ  email</text>
+<text x="115" y="217" fill="#cbd5e1" font-family="Arial" font-size="14">senha_hash · perfil</text>
+<rect x="100" y="335" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M113 335H327Q340 335 340 348V377H100V348Q100 335 113 335" fill="#373d87"/>
+<text x="115" y="363" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">clientes</text>
+<text x="115" y="402" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="115" y="427" fill="#7dd3fc" font-family="Arial" font-size="14">UQ  email</text>
+<text x="115" y="452" fill="#cbd5e1" font-family="Arial" font-size="14">nome · telefone</text>
+<rect x="100" y="555" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M113 555H327Q340 555 340 568V597H100V568Q100 555 113 555" fill="#373d87"/>
+<text x="115" y="583" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">categorias</text>
+<text x="115" y="622" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="115" y="647" fill="#7dd3fc" font-family="Arial" font-size="14">UQ  nome</text>
+<text x="115" y="672" fill="#cbd5e1" font-family="Arial" font-size="14">descricao</text>
+<rect x="100" y="740" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M113 740H327Q340 740 340 753V782H100V753Q100 740 113 740" fill="#373d87"/>
+<text x="115" y="768" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">fornecedores</text>
+<text x="115" y="807" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="115" y="832" fill="#7dd3fc" font-family="Arial" font-size="14">UQ  email / cnpj</text>
+<text x="115" y="857" fill="#cbd5e1" font-family="Arial" font-size="14">nome</text>
+<rect x="490" y="210" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M503 210H717Q730 210 730 223V252H490V223Q490 210 503 210" fill="#373d87"/>
+<text x="505" y="238" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">vendas</text>
+<text x="505" y="277" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="505" y="302" fill="#7dd3fc" font-family="Arial" font-size="14">FK  cliente_id · usuario_id</text>
+<text x="505" y="327" fill="#cbd5e1" font-family="Arial" font-size="14">codigo · status · total</text>
+<rect x="850" y="210" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M863 210H1077Q1090 210 1090 223V252H850V223Q850 210 863 210" fill="#373d87"/>
+<text x="865" y="238" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">itens_venda</text>
+<text x="865" y="277" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="865" y="302" fill="#7dd3fc" font-family="Arial" font-size="14">FK  venda_id · produto_id</text>
+<text x="865" y="327" fill="#cbd5e1" font-family="Arial" font-size="14">quantidade · preco_unitario</text>
+<rect x="850" y="560" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M863 560H1077Q1090 560 1090 573V602H850V573Q850 560 863 560" fill="#373d87"/>
+<text x="865" y="588" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">produtos</text>
+<text x="865" y="627" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="865" y="652" fill="#7dd3fc" font-family="Arial" font-size="14">FK  categoria_id · fornecedor_id</text>
+<text x="865" y="677" fill="#cbd5e1" font-family="Arial" font-size="14">sku · preco · estoque</text>
+<rect x="490" y="445" width="240" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M503 445H717Q730 445 730 458V487H490V458Q490 445 503 445" fill="#373d87"/>
+<text x="505" y="473" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">pagamentos</text>
+<text x="505" y="512" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="505" y="537" fill="#7dd3fc" font-family="Arial" font-size="14">FK  venda_id (UNIQUE)</text>
+<text x="505" y="562" fill="#cbd5e1" font-family="Arial" font-size="14">metodo · valor · status</text>
+<rect x="490" y="710" width="280" height="151" rx="13" fill="#17223a" stroke="#354664" stroke-width="2"/>
+<path d="M503 710H757Q770 710 770 723V752H490V723Q490 710 503 710" fill="#373d87"/>
+<text x="505" y="738" fill="#fff" font-size="16" font-family="Arial" font-weight="bold">movimentacoes_estoque</text>
+<text x="505" y="777" fill="#a5b4fc" font-family="Arial" font-size="14">PK  id</text>
+<text x="505" y="802" fill="#7dd3fc" font-family="Arial" font-size="14">FK  produto_id · venda_id</text>
+<text x="505" y="827" fill="#cbd5e1" font-family="Arial" font-size="14">tipo · quantidade · anterior · posterior</text>
+</svg>
